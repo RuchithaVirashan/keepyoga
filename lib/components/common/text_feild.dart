@@ -22,39 +22,40 @@ class CustomTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ScreenUtil.init(context);
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(15.r),
-        boxShadow: [
-          BoxShadow(
-            color: const Color(0x23154378),
-            blurRadius: 50.r,
-            offset: const Offset(12, 24),
-            spreadRadius: 0,
-          )
-        ],
-      ),
-      child: TextFormField(
-        controller: controller,
-        decoration: InputDecoration(
-          hintText: hintText,
-          hintStyle: const TextStyle(color: Color(0x6022242E)),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(15.r),
-          ),
-          contentPadding: EdgeInsets.only(
-            left: 25.w,
-            top: 15.h,
-            bottom: 15.h,
-          ),
-          fillColor: const Color(0xFFFFFFFF),
-          filled: true,
+    return TextFormField(
+      controller: controller,
+      decoration: InputDecoration(
+        hintText: hintText,
+        labelText: hintText,
+        floatingLabelAlignment: FloatingLabelAlignment.start,
+        labelStyle: TextStyle(
+          color: const Color(0xFF72777A),
+          fontSize: 16.sp,
+          fontWeight: FontWeight.w400,
         ),
-        validator: validate,
-        keyboardType: keybordType,
-        maxLines: maxLine,
-        onChanged: onChanged,
+        hintStyle: TextStyle(
+          color: const Color(0xFF72777A),
+          fontSize: 16.sp,
+          fontWeight: FontWeight.w400,
+        ),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8.r),
+          borderSide: const BorderSide(
+            color: Color(0xFFE3E5E5),
+          ),
+        ),
+        contentPadding: EdgeInsets.only(
+          left: 25.w,
+          top: 15.h,
+          bottom: 15.h,
+        ),
+        fillColor: const Color(0xFFFFFFFF),
+        filled: true,
       ),
+      validator: validate,
+      keyboardType: keybordType,
+      maxLines: maxLine,
+      onChanged: onChanged,
     );
   }
 }
