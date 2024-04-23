@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:keepyoga/components/common/default_text.dart';
+import 'package:keepyoga/screens/lesson_screen.dart';
 
 class SessionLayout extends StatelessWidget {
   const SessionLayout({super.key});
@@ -66,8 +67,7 @@ class SessionLayout extends StatelessWidget {
         padding: const EdgeInsets.all(8.0),
         child: Card(
           color: Color.fromARGB(255, 255, 255, 255),
-
-          elevation: 3, // Add elevation for a shadow effect
+          elevation: 3,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(15.r),
           ),
@@ -77,7 +77,6 @@ class SessionLayout extends StatelessWidget {
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // Image Container
                   SizedBox(
                     width: 80.w,
                     child: ClipRRect(
@@ -98,7 +97,7 @@ class SessionLayout extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         DefaultText(
-                          content: "${dataList[index].name}",
+                          content: dataList[index].name,
                           fontSizeR: 18.sp,
                           colorR: const Color.fromRGBO(0, 0, 0, 0.8),
                           textAlignR: TextAlign.start,
@@ -132,7 +131,7 @@ class SessionLayout extends StatelessWidget {
                                     size: 8.sp,
                                   ),
                                   Text(
-                                    '${dataList[index].levelname}',
+                                    dataList[index].levelname,
                                     style: TextStyle(fontSize: 10.sp),
                                   ),
                                 ],
@@ -173,7 +172,7 @@ class SessionLayout extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding:  EdgeInsets.only(left: 20.w),
+              padding: EdgeInsets.only(left: 20.w),
               child: DefaultText(
                 content: 'Top Sessions',
                 fontSizeR: 24.sp,
@@ -188,7 +187,24 @@ class SessionLayout extends StatelessWidget {
               padding: EdgeInsets.symmetric(horizontal: 5.w),
               itemCount: dataList.length,
               itemBuilder: (context, index) {
-                return buildCard(context, index);
+                return GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      PageRouteBuilder(
+                        transitionDuration: const Duration(milliseconds: 300),
+                        transitionsBuilder: (context, animation, _, child) {
+                          return FadeTransition(
+                            opacity: animation,
+                            child: child,
+                          );
+                        },
+                        pageBuilder: (_, __, ___) => const LessonScreen(),
+                      ),
+                    );
+                  },
+                  child: buildCard(context, index),
+                );
               },
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 1,
