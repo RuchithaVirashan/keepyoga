@@ -16,8 +16,11 @@ class _LessonScreenState extends State<LessonScreen> {
     return Scaffold(
       body: Stack(
         children: [
-          Container(
-            color: Colors.yellow,
+          Image.asset(
+            "assets/Image_lesson.png",
+            fit: BoxFit.cover,
+            width: ScreenUtil().screenWidth,
+            height: ScreenUtil().screenHeight,
           ),
           DraggableScrollableSheet(
             initialChildSize: 438 / MediaQuery.of(context).size.height,
