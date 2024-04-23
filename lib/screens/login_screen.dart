@@ -6,6 +6,7 @@ import '../components/common/default_text.dart';
 import '../components/common/text_feild.dart';
 import '../components/status/error.dart';
 import '../services/validation/validate_service.dart';
+import 'home_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -156,7 +157,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                     );
                                   },
                                   pageBuilder: (_, __, ___) =>
-                                      const LoginScreen(),
+                                      const HomeScreen(),
                                 ),
                               );
                             } else {
