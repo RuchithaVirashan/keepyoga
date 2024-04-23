@@ -38,7 +38,8 @@ class CustomNavigationBar extends StatelessWidget {
           final destination = entry.value;
           final isSelected = index == selectedIndex;
           final icon = isSelected ? destination.selectedIcon : destination.icon;
-          final borderColor = isSelected ? Colors.blue : Colors.transparent;
+          final borderColor =
+              isSelected ? const Color(0xFF6B4EFF) : Colors.transparent;
 
           return GestureDetector(
             onTap: () {
