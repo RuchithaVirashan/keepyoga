@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:keepyoga/components/common/default_text.dart';
-
-import '../components/common/back_app_bar.dart';
+import 'package:keepyoga/layout/home/basic_yoga_card_layout.dart';
+import 'package:keepyoga/layout/home/category_card_layout.dart';
+import 'package:keepyoga/layout/home/session_layout.dart';
 import '../components/home/home_app_bar.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -20,17 +20,36 @@ class _HomeScreenState extends State<HomeScreen> {
     ScreenUtil.init(context);
     return Scaffold(
       key: _scaffoldKey,
-      appBar: HomeAppBar(),
-      body: const Column(
-        children: [
-          // Padding(
-          //   padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 16.w),
-          //   child: ButtonLayout(
-          //     handleaddToCart: () {},
-          //     handlebuyNow: () {},
-          //   ),
-          // ),
-        ],
+      appBar: const HomeAppBar(),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Padding(
+              padding: EdgeInsets.only(
+                left: 2.w,
+                top: 2.h,
+                right: 2.w,
+              ),
+            ),
+            const CatergoryCardLayout(),
+            Padding(
+              padding: EdgeInsets.only(
+                left: 2.w,
+                top: 8.h,
+                right: 2.w,
+              ),
+            ),
+            const BasicYogaCardLayout(),
+             Padding(
+              padding: EdgeInsets.only(
+                left: 2.w,
+                top: 8.h,
+                right: 2.w,
+              ),
+            ),
+            const SessionLayout(),
+          ],
+        ),
       ),
     );
   }
