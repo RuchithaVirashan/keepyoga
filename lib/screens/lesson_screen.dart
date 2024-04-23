@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:keepyoga/components/common/back_button.dart';
+
+import '../components/lesson/lesson_close_button.dart';
+import '../layout/lesson/bottom_sheet_layout.dart';
 
 class LessonScreen extends StatefulWidget {
   const LessonScreen({Key? key}) : super(key: key);
@@ -16,63 +20,24 @@ class _LessonScreenState extends State<LessonScreen> {
     return Scaffold(
       body: Stack(
         children: [
-          Container(
-            color: Colors.yellow,
+          Image.asset(
+            "assets/Image_lesson.png",
+            fit: BoxFit.cover,
+            width: ScreenUtil().screenWidth,
+            height: ScreenUtil().screenHeight,
           ),
-          DraggableScrollableSheet(
-            initialChildSize: 438 / MediaQuery.of(context).size.height,
-            minChildSize: 238 / MediaQuery.of(context).size.height,
-            maxChildSize: 638 / MediaQuery.of(context).size.height,
-            builder: (BuildContext context, scrollController) {
-              return Container(
-                clipBehavior: Clip.hardEdge,
-                decoration: BoxDecoration(
-                  color: Theme.of(context).canvasColor,
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(16.r),
-                    topRight: Radius.circular(16.r),
-                  ),
-                ),
-                child: CustomScrollView(
-                  controller: scrollController,
-                  slivers: [
-                    SliverToBoxAdapter(
-                      child: Center(
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: const Color(0xFFCDCFD0),
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(8.r)),
-                          ),
-                          height: 5.h,
-                          width: 48.w,
-                          margin: const EdgeInsets.symmetric(vertical: 10),
-                        ),
-                      ),
-                    ),
-                    SliverAppBar(
-                      stretchTriggerOffset: 438.h,
-                      title:
-                          Text('My App', style: TextStyle(color: Colors.black)),
-                      primary: false,
-                      pinned: true,
-                      centerTitle: false,
-                    ),
-                    SliverList(
-                      delegate: SliverChildBuilderDelegate(
-                        (BuildContext context, int index) {
-                          return ListTile(
-                            title: Text('Item $index'),
-                          );
-                        },
-                        childCount: 50,
-                      ),
-                    ),
-                  ],
-                ),
-              );
-            },
+          Padding(
+            padding: EdgeInsets.only(left: 18.w, top: 48.h),
+            child: const CommonBackButton(),
           ),
+          Align(
+            alignment: Alignment.topRight,
+            child: Padding(
+              padding: EdgeInsets.only(top: 60.h, right: 24.w),
+              child: const LessonCloseButton(),
+            ),
+          ),
+          const LessonBottomSheet(),
         ],
       ),
     );
