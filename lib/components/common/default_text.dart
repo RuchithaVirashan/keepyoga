@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 
 class DefaultText extends StatelessWidget {
   final String content;
@@ -8,6 +6,7 @@ class DefaultText extends StatelessWidget {
   final Color colorR;
   final TextAlign textAlignR;
   final FontWeight fontWeightR;
+  final List<TextSpan>? children;
 
   const DefaultText({
     super.key,
@@ -16,18 +15,33 @@ class DefaultText extends StatelessWidget {
     required this.colorR,
     required this.textAlignR,
     required this.fontWeightR,
+    this.children,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      content,
-      style: TextStyle(
-        fontSize: fontSizeR,
-        fontWeight: fontWeightR,
-        color: colorR,
-      ),
-      textAlign: textAlignR,
-    );
+    if (children != null) {
+      return RichText(
+        text: TextSpan(
+          style: TextStyle(
+            fontSize: fontSizeR,
+            fontWeight: fontWeightR,
+            color: colorR,
+          ),
+          children: children!,
+        ),
+        textAlign: textAlignR,
+      );
+    } else {
+      return Text(
+        content,
+        style: TextStyle(
+          fontSize: fontSizeR,
+          fontWeight: fontWeightR,
+          color: colorR,
+        ),
+        textAlign: textAlignR,
+      );
+    }
   }
 }

@@ -1,10 +1,15 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:keepyoga/screens/login_screen.dart';
 
 import '../components/common/back_app_bar.dart';
+import '../components/common/button.dart';
 import '../components/common/default_text.dart';
 import '../components/common/drop_down.dart';
 import '../components/common/text_feild.dart';
+import '../components/status/error.dart';
 import '../services/validation/validate_service.dart';
 
 class RegistrationScreen extends StatefulWidget {
@@ -26,7 +31,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   final formKey = GlobalKey<FormState>();
 
   String dropdownGendervalue = ('No option');
-  int selectedGender = 0;
+  int selectedGender = -1;
   List<String> genders = ['Male', 'Female', 'Other'];
 
   handleGenderSelect(String? value) {
@@ -43,11 +48,11 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     return Scaffold(
       appBar: const BackAppBar(),
       body: SingleChildScrollView(
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 12.h),
-          child: Form(
-            autovalidateMode: AutovalidateMode.onUserInteraction,
-            key: formKey,
+        child: Form(
+          autovalidateMode: AutovalidateMode.onUserInteraction,
+          key: formKey,
+          child: Padding(
+            padding: EdgeInsets.only(top: 10.h, left: 24.w, right: 24.w),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -65,6 +70,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   fontSizeR: 16.sp,
                   fontWeightR: FontWeight.w400,
                   textAlignR: TextAlign.start,
+                ),
+                SizedBox(
+                  height: 20.h,
                 ),
                 Padding(
                   padding: EdgeInsets.symmetric(
@@ -145,6 +153,42 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 ),
               ],
             ),
+          ),
+        ),
+      ),
+      bottomNavigationBar: BottomAppBar(
+        surfaceTintColor: const Color(0xFFFFFFFF),
+        child: Padding(
+          padding: EdgeInsets.only(left: 10.w, right: 10.w),
+          child: ButtonWidget(
+            onPressed: () {
+              if (formKey.currentState!.validate()) {
+                if (selectedGender != -1) {
+                  Navigator.push(
+                    context,
+                    PageRouteBuilder(
+                      transitionDuration: const Duration(milliseconds: 300),
+                      transitionsBuilder: (context, animation, _, child) {
+                        return FadeTransition(
+                          opacity: animation,
+                          child: child,
+                        );
+                      },
+                      pageBuilder: (_, __, ___) => const LoginScreen(),
+                    ),
+                  );
+                } else {
+                  showErrorDialog(context, 'Please select gender', 'Error');
+                }
+              } else {
+                showErrorDialog(context, 'Please fill all fields', 'Error');
+              }
+            },
+            minHeight: 48.h,
+            buttonName: 'Create Acount',
+            textColor: const Color(0xFFFFFFFF),
+            buttonColor: const Color(0xFF6B4EFF),
+            radius: 48.r,
           ),
         ),
       ),
