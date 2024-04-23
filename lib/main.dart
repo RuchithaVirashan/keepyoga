@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 // import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:keepyoga/screens/main_screen.dart';
 import 'dart:ui' as ui;
 import 'screens/launch_screen.dart';
 import 'utils/theme.dart';
@@ -32,7 +33,9 @@ class MyApp extends StatelessWidget {
             //   '/addItem': (context) => const AddItemScreen(),
             //   '/createInvoice': (context) => const CreateInvoiceScreen(),
             // },
-            home: const LaunchScreen(),
+            home: const MainScreen(
+              selectedIndex: 0,
+            ),
           );
         });
   }
