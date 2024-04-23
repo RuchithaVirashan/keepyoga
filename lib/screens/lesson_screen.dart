@@ -6,7 +6,7 @@ import '../components/lesson/lesson_close_button.dart';
 import '../layout/lesson/bottom_sheet_layout.dart';
 
 class LessonScreen extends StatefulWidget {
-  const LessonScreen({Key? key}) : super(key: key);
+  const LessonScreen({super.key});
 
   @override
   State<LessonScreen> createState() => _LessonScreenState();
