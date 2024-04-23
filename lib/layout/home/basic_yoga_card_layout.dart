@@ -9,7 +9,7 @@ class BasicYogaCardLayout extends StatelessWidget {
   Widget build(BuildContext context) {
     ScreenUtil.init(context);
     return Padding(
-      padding: EdgeInsets.only(left: 30.w, right: 30.w),
+      padding: EdgeInsets.only(left: 20.w, right: 20.w),
       child: Stack(
         children: [
           Container(
@@ -25,11 +25,7 @@ class BasicYogaCardLayout extends StatelessWidget {
             ),
             child: Padding(
               padding: EdgeInsets.only(
-                left: 20.w,
-                top: 20.h,
-                right: 20.w,
-                bottom: 20.h
-              ),
+                  left: 20.w, top: 20.h, right: 20.w, bottom: 20.h),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
