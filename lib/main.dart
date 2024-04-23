@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:keepyoga/screens/main_screen.dart';
 import 'dart:ui' as ui;
 import 'screens/launch_screen.dart';
+import 'screens/lesson_screen.dart';
 import 'utils/theme.dart';
 
 Future<void> main() async {
@@ -33,9 +34,7 @@ class MyApp extends StatelessWidget {
             //   '/addItem': (context) => const AddItemScreen(),
             //   '/createInvoice': (context) => const CreateInvoiceScreen(),
             // },
-            home: const MainScreen(
-              selectedIndex: 0,
-            ),
+            home: LessonScreen(),
           );
         });
   }
