@@ -2,11 +2,6 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:audio_waveforms/audio_waveforms.dart';
-import 'package:file_picker/file_picker.dart';
-import 'package:path_provider/path_provider.dart';
-
-import '../../components/lesson/player_layout.dart';
 
 class LessonViewBottomSheet extends StatefulWidget {
   const LessonViewBottomSheet({super.key});
@@ -32,7 +27,8 @@ class _LessonViewBottomSheetState extends State<LessonViewBottomSheet> {
               topRight: Radius.circular(16.r),
             ),
           ),
-          child: PlayerLayout(),
+          // child: PlayerLayout(),
+          child: Container(),
         );
       },
     );
