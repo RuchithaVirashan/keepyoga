@@ -64,14 +64,13 @@ class _CatergoryCardLayoutState extends State<CatergoryCardLayout> {
             ClipRRect(
               borderRadius: BorderRadius.circular(12.r),
               child: Image.asset(
-                '${dataList[index].imageUrl}',
+                dataList[index].imageUrl,
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(
-                  left: 15.w, right: 15.w, top: 10.h),
+              padding: EdgeInsets.only(left: 15.w, right: 15.w, top: 10.h),
               child: DefaultText(
-                content: "${dataList[index].name}",
+                content: dataList[index].name,
                 fontSizeR: 16.sp,
                 colorR: const Color.fromRGBO(0, 0, 0, 0.8),
                 textAlignR: TextAlign.start,
@@ -81,23 +80,20 @@ class _CatergoryCardLayoutState extends State<CatergoryCardLayout> {
           ],
         );
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 8.h),
       child: SizedBox(
-        height: 180.h,
-        child: Padding(
-          padding: EdgeInsets.only(bottom: 15.h),
-          child: ListView.separated(
-            scrollDirection: Axis.horizontal,
-            itemCount: dataList.length,
-            separatorBuilder: (context, index) {
-              return SizedBox(
-                width: 5.w,
-              );
-            },
-            itemBuilder: (context, index) {
-              return buildCard(context, index);
-            },
-          ),
+        height: 115.h,
+        child: ListView.separated(
+          scrollDirection: Axis.horizontal,
+          itemCount: dataList.length,
+          separatorBuilder: (context, index) {
+            return SizedBox(
+              width: 5.w,
+            );
+          },
+          itemBuilder: (context, index) {
+            return buildCard(context, index);
+          },
         ),
       ),
     );
