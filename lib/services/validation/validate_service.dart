@@ -1,6 +1,14 @@
 class ValidateService {
-  String? isEmptyField(String value, String feild) {
+  String? isEmptyField(String value) {
     if (value.isEmpty) {
+      return 'Required';
+    } else {
+      return null;
+    }
+  }
+
+  String? validateDropDown(String value) {
+    if (value == 'No option') {
       return 'Required';
     } else {
       return null;
@@ -19,35 +27,54 @@ class ValidateService {
     }
   }
 
-  String? validatePrice(String value) {
-    if (value.isEmpty) {
-      return 'Required';
-    }
+  String? validateEmail(String value) {
+    String pattern =
+        r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
+    RegExp regExp = new RegExp(pattern);
+    String? isEmpty = isEmptyField(value);
 
-    final RegExp priceRegex = RegExp(r'^\d+(\.\d{1,2})?$');
-    if (!priceRegex.hasMatch(value)) {
-      return 'Price must be a whole number with up to two decimal places';
+    if (isEmpty != null) {
+      return isEmpty;
+    } else if (!regExp.hasMatch(value)) {
+      return "Invalid Email";
     }
-
     return null;
   }
 
-  String? validateDiscount(String value) {
-  if (value.isEmpty) {
-    return 'Required';
+  String? validatePassword(String password) {
+    if (password.length < 8) {
+      return "Must be more than 8 charactors";
+    }
+
+    if (!password.contains(RegExp(r"[a-z]"))) {
+      return "at least one lowercase character";
+    }
+    if (!password.contains(RegExp(r"[A-Z]"))) {
+      return "at least one upper case character";
+    }
+    if (!password.contains(RegExp(r"[0-9]"))) {
+      return "at least one Digit";
+    }
+    return null;
   }
 
-  final RegExp discountRegex = RegExp(r'^\d+(\.\d{1,2})?$');
-  if (!discountRegex.hasMatch(value)) {
-    return 'Discount must be a number with up to two decimal places';
+  String? validateConfirmPassword(String password, String confirmPassword) {
+    if (password.length < 8) {
+      return "Must be more than 8 charactors";
+    }
+
+    if (!password.contains(RegExp(r"[a-z]"))) {
+      return "at least one lowercase character";
+    }
+    if (!password.contains(RegExp(r"[A-Z]"))) {
+      return "at least one upper case character";
+    }
+    if (!password.contains(RegExp(r"[0-9]"))) {
+      return "at least one Digit";
+    }
+    if (password != confirmPassword) {
+      return 'Password does not match';
+    }
+    return null;
   }
-
-  double discountValue = double.parse(value);
-  if (discountValue < 0 || discountValue > 100) {
-    return 'Discount must be between 0 and 100';
-  }
-
-  return null;
-}
-
 }

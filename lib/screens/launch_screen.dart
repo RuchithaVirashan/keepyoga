@@ -4,6 +4,7 @@ import 'package:keepyoga/screens/registration_screen.dart';
 
 import '../components/common/button.dart';
 import '../components/common/default_text.dart';
+import 'login_screen.dart';
 
 class LaunchScreen extends StatefulWidget {
   const LaunchScreen({super.key});
@@ -96,7 +97,24 @@ class _LaunchScreenState extends State<LaunchScreen> {
                           padding: EdgeInsets.only(top: 10.h),
                           child: Center(
                             child: ButtonWidget(
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  PageRouteBuilder(
+                                    transitionDuration:
+                                        const Duration(milliseconds: 300),
+                                    transitionsBuilder:
+                                        (context, animation, _, child) {
+                                      return FadeTransition(
+                                        opacity: animation,
+                                        child: child,
+                                      );
+                                    },
+                                    pageBuilder: (_, __, ___) =>
+                                        const LoginScreen(),
+                                  ),
+                                );
+                              },
                               minHeight: 48.h,
                               buttonName: 'Log in',
                               textColor: const Color(0xFFFFFFFF),
