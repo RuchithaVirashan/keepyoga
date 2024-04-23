@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:keepyoga/screens/main_screen.dart';
 
 import '../components/common/button.dart';
 import '../components/common/default_text.dart';
@@ -156,8 +157,9 @@ class _LoginScreenState extends State<LoginScreen> {
                                       child: child,
                                     );
                                   },
-                                  pageBuilder: (_, __, ___) =>
-                                      const HomeScreen(),
+                                  pageBuilder: (_, __, ___) => const MainScreen(
+                                    selectedIndex: 0,
+                                  ),
                                 ),
                               );
                             } else {
