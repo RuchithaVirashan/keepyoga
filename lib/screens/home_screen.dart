@@ -18,37 +18,42 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     ScreenUtil.init(context);
-    return Scaffold(
-      key: _scaffoldKey,
-      appBar: const HomeAppBar(),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Padding(
-              padding: EdgeInsets.only(
-                left: 2.w,
-                top: 2.h,
-                right: 2.w,
+    return WillPopScope(
+      onWillPop: () {
+        return Future.value(false);
+      },
+      child: Scaffold(
+        key: _scaffoldKey,
+        appBar: const HomeAppBar(),
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              Padding(
+                padding: EdgeInsets.only(
+                  left: 2.w,
+                  top: 2.h,
+                  right: 2.w,
+                ),
               ),
-            ),
-            const CatergoryCardLayout(),
-            Padding(
-              padding: EdgeInsets.only(
-                left: 2.w,
-                top: 8.h,
-                right: 2.w,
+              const CatergoryCardLayout(),
+              Padding(
+                padding: EdgeInsets.only(
+                  left: 2.w,
+                  top: 8.h,
+                  right: 2.w,
+                ),
               ),
-            ),
-            const BasicYogaCardLayout(),
-             Padding(
-              padding: EdgeInsets.only(
-                left: 2.w,
-                top: 8.h,
-                right: 2.w,
+              const BasicYogaCardLayout(),
+              Padding(
+                padding: EdgeInsets.only(
+                  left: 2.w,
+                  top: 8.h,
+                  right: 2.w,
+                ),
               ),
-            ),
-            const SessionLayout(),
-          ],
+              const SessionLayout(),
+            ],
+          ),
         ),
       ),
     );
