@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:keepyoga/components/common/default_text.dart';
+import 'package:keepyoga/screens/lesson_screen.dart';
 
 class SessionLayout extends StatelessWidget {
   const SessionLayout({super.key});
@@ -187,7 +188,21 @@ class SessionLayout extends StatelessWidget {
               itemCount: dataList.length,
               itemBuilder: (context, index) {
                 return GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      PageRouteBuilder(
+                        transitionDuration: const Duration(milliseconds: 300),
+                        transitionsBuilder: (context, animation, _, child) {
+                          return FadeTransition(
+                            opacity: animation,
+                            child: child,
+                          );
+                        },
+                        pageBuilder: (_, __, ___) => const LessonScreen(),
+                      ),
+                    );
+                  },
                   child: buildCard(context, index),
                 );
               },
