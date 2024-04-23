@@ -71,10 +71,10 @@ class _CatergoryCardLayoutState extends State<CatergoryCardLayout> {
               padding: EdgeInsets.only(left: 15.w, right: 15.w, top: 10.h),
               child: DefaultText(
                 content: dataList[index].name,
-                fontSizeR: 16.sp,
+                fontSizeR: 14.sp,
                 colorR: const Color.fromRGBO(0, 0, 0, 0.8),
                 textAlignR: TextAlign.start,
-                fontWeightR: FontWeight.w400,
+                fontWeightR: FontWeight.w700,
               ),
             ),
           ],

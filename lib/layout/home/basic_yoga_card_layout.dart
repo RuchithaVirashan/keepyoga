@@ -32,10 +32,10 @@ class BasicYogaCardLayout extends StatelessWidget {
                 children: [
                   DefaultText(
                     content: "Basic Yoga",
-                    fontSizeR: 16.sp,
+                    fontSizeR: 20.sp,
                     colorR: Colors.white,
                     textAlignR: TextAlign.start,
-                    fontWeightR: FontWeight.w400,
+                    fontWeightR: FontWeight.w700,
                   ),
                   SizedBox(height: 20.h),
                   SizedBox(
@@ -43,7 +43,7 @@ class BasicYogaCardLayout extends StatelessWidget {
                     child: DefaultText(
                       content:
                           "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-                      fontSizeR: 14.sp,
+                      fontSizeR: 13.sp,
                       colorR: Colors.white,
                       textAlignR: TextAlign.start,
                       fontWeightR: FontWeight.w400,

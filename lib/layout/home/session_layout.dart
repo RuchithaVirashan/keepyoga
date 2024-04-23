@@ -8,8 +8,6 @@ class SessionLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ScreenUtil.init(context);
-
     List<ListItem> dataList = [
       ListItem(
         imageUrl: 'assets/Image Placeholder (Copy paste here).png',
@@ -59,105 +57,89 @@ class SessionLayout extends StatelessWidget {
         authorname: 'Sarah William',
         rate: 4.5,
       ),
-      // Add more items as needed
     ];
 
     Widget buildCard(BuildContext context, int index) {
-      return Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Card(
-          color: Color.fromARGB(255, 255, 255, 255),
-          elevation: 3,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(15.r),
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Expanded(
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(
-                    width: 80.w,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(5.r),
-                        bottomLeft: Radius.circular(5.r),
-                      ),
-                      child: Image.asset(
-                        dataList[index].imageUrl,
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ),
-                  SizedBox(width: 10.w),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        DefaultText(
-                          content: dataList[index].name,
-                          fontSizeR: 18.sp,
-                          colorR: const Color.fromRGBO(0, 0, 0, 0.8),
-                          textAlignR: TextAlign.start,
-                          fontWeightR: FontWeight.w800,
-                        ),
-                        SizedBox(height: 10.h),
-                        DefaultText(
-                          content: '${dataList[index].updateQuantity} lessons',
-                          fontSizeR: 14.sp,
-                          colorR: Colors.grey,
-                          textAlignR: TextAlign.start,
-                          fontWeightR: FontWeight.w600,
-                        ),
-                        SizedBox(height: 10.h),
-                        Padding(
-                          padding: EdgeInsets.only(right: 20.w),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                'By ${dataList[index].authorname}',
-                                style: TextStyle(fontSize: 10.sp),
-                              ),
-                              SizedBox(width: 10.w),
-                              Row(
-                                children: [
-                                  Icon(
-                                    Icons.circle,
-                                    color: Colors.grey,
-                                    size: 8.sp,
-                                  ),
-                                  Text(
-                                    dataList[index].levelname,
-                                    style: TextStyle(fontSize: 10.sp),
-                                  ),
-                                ],
-                              ),
-                              SizedBox(width: 10.w),
-                              Row(
-                                children: [
-                                  Icon(
-                                    Icons.star,
-                                    color: Colors.amber,
-                                    size: 10.sp,
-                                  ),
-                                  Text(
-                                    '${dataList[index].rate}',
-                                    style: TextStyle(fontSize: 10.sp),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
+      return Card(
+        color: const Color.fromARGB(255, 255, 255, 255),
+        elevation: 3,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15.r),
+        ),
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 5.w),
+          child: ListTile(
+            leading: ClipRRect(
+              borderRadius: BorderRadius.all(
+                Radius.circular(5.r),
               ),
+              child: Image.asset(
+                dataList[index].imageUrl,
+                fit: BoxFit.cover,
+                width: 75.w,
+              ),
+            ),
+            title: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                DefaultText(
+                  content: dataList[index].name,
+                  fontSizeR: 18.sp,
+                  colorR: const Color.fromRGBO(0, 0, 0, 0.8),
+                  textAlignR: TextAlign.start,
+                  fontWeightR: FontWeight.w800,
+                ),
+                SizedBox(height: 8.h),
+                DefaultText(
+                  content: '${dataList[index].updateQuantity} lessons',
+                  fontSizeR: 14.sp,
+                  colorR: Colors.grey,
+                  textAlignR: TextAlign.start,
+                  fontWeightR: FontWeight.w600,
+                ),
+                Padding(
+                  padding: EdgeInsets.only(top: 8.h),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'By ${dataList[index].authorname}',
+                        style: TextStyle(fontSize: 10.sp),
+                      ),
+                      SizedBox(width: 10.w),
+                      Row(
+                        children: [
+                          Icon(
+                            Icons.circle,
+                            color: Colors.grey,
+                            size: 8.sp,
+                          ),
+                          Text(
+                            dataList[index].levelname,
+                            style: TextStyle(fontSize: 10.sp),
+                          ),
+                        ],
+                      ),
+                      SizedBox(width: 10.w),
+                      Row(
+                        children: [
+                          Icon(
+                            Icons.star,
+                            color: Colors.amber,
+                            size: 10.sp,
+                          ),
+                          Text(
+                            '${dataList[index].rate}',
+                            style: TextStyle(fontSize: 10.sp),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ],
             ),
           ),
         ),
@@ -165,7 +147,7 @@ class SessionLayout extends StatelessWidget {
     }
 
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: EdgeInsets.symmetric(vertical: 10.h),
       child: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -181,10 +163,11 @@ class SessionLayout extends StatelessWidget {
                 fontWeightR: FontWeight.w900,
               ),
             ),
+            SizedBox(height: 10.h),
             GridView.builder(
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
-              padding: EdgeInsets.symmetric(horizontal: 5.w),
+              padding: EdgeInsets.symmetric(horizontal: 20.w),
               itemCount: dataList.length,
               itemBuilder: (context, index) {
                 return GestureDetector(
@@ -208,10 +191,10 @@ class SessionLayout extends StatelessWidget {
               },
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 1,
-                childAspectRatio: 1.0,
-                crossAxisSpacing: 2.w,
-                mainAxisSpacing: 2.h,
-                mainAxisExtent: 150.h,
+                // childAspectRatio: 1.5,
+                // crossAxisSpacing: 2.w,
+                mainAxisSpacing: 12.h,
+                mainAxisExtent: 120.h,
               ),
             ),
           ],

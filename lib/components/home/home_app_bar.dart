@@ -10,10 +10,21 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Size get preferredSize => const Size.fromHeight(50.0);
 
+  String getGreeting() {
+    final hour = DateTime.now().hour;
+    if (hour < 12) {
+      return 'Good Morning';
+    } else if (hour < 18) {
+      return 'Good Afternoon';
+    } else {
+      return 'Good Evening';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     ScreenUtil.init(context);
-
+    final greeting = getGreeting();
     return Container(
       decoration: BoxDecoration(
         color: Colors.white,
@@ -40,7 +51,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
                 children: [
                   DefaultText(
                     colorR: Colors.black,
-                    content: "Good Morning",
+                    content: greeting,
                     fontSizeR: 24.sp,
                     fontWeightR: FontWeight.w700,
                     textAlignR: TextAlign.start,
@@ -50,8 +61,8 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
                       ClipOval(
                         child: SizedBox.fromSize(
                           size: Size.fromRadius(20.r),
-                          child: Image.network(
-                            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAFH6UNuxXC-oLZGoWjIqKe8WAOIbM52E6b4VLtEBlbg&s',
+                          child: Image.asset(
+                            'assets/Ellipse 7.png',
                             width: 12.w,
                             height: 12.h,
                             fit: BoxFit.cover,
