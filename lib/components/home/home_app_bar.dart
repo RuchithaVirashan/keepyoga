@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:keepyoga/components/common/default_text.dart';
 
+import '../../screens/login_screen.dart';
+
 class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
   const HomeAppBar({super.key});
 
@@ -67,7 +69,21 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
                         ),
                         splashRadius: 20.r,
                         onPressed: () {
-                          Navigator.of(context).pop();
+                          Navigator.push(
+                            context,
+                            PageRouteBuilder(
+                              transitionDuration:
+                                  const Duration(milliseconds: 300),
+                              transitionsBuilder:
+                                  (context, animation, _, child) {
+                                return FadeTransition(
+                                  opacity: animation,
+                                  child: child,
+                                );
+                              },
+                              pageBuilder: (_, __, ___) => const LoginScreen(),
+                            ),
+                          );
                         },
                       ),
                     ],
